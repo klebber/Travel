@@ -1,3 +1,4 @@
+<?php include("init.php"); ?>
 <header>
     <div class="cbp-af-header">
       <div class=" cbp-af-inner">
@@ -17,10 +18,19 @@
                     <ul class="nav topnav">
                       <li><a href="index.php">Početna</a></li>
                       <li><a href="destinacije.php">Destinacije</a></li>
-                      <li><a href="administracija.php">Administracija</a></li>
-                      <?php if($_SESSION['ulogovan'] == 1 && $_SESSION['rola'] == 'admin') { ?>
-                        <li><a href="index.php">Test</a></li>
+                      <?php if($_SESSION['ulogovan'] == 1 && $_SESSION['rola'] == 'korisnik'){ ?>
+			                  <li><a href="rezervacije.php">Rezervacije</a></li>
                       <?php } ?>
+                      <?php if($_SESSION['ulogovan'] == 1 && $_SESSION['rola'] == 'admin'){ ?>
+			                  <li><a href="administracija.php">Administracija</a></li>
+                      <?php } ?>
+                      <?php if($_SESSION['ulogovan'] == 1){ ?>
+			                  <li><a >Ime: <b><?php echo $_SESSION['ime']; ?></b></a></li>
+			                  <li><a href="logout.php">Logout</a></li>
+		                  <?php } else { ?>
+			                  <li><a href="login.php">Login</a></li>
+			                  <li><a href="registracija.php">Registracija</a></li>
+		                  <?php } ?> 
                     </ul>
                   </nav>
                 </div>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php include("init.php"); 
+if($_SESSION['ulogovan'] == 0 || $_SESSION['rola'] != 'admin') {
+    header("Location: index.php");
+}?>
 <head>
     <meta charset="utf-8">
     <title>TRAVEL - Turistička agencija</title>
@@ -105,7 +108,7 @@
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include('header.php'); ?>
 
     <div class="row">
         <div class="span12">
