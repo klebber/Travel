@@ -8,10 +8,16 @@ if(isset($_POST['ime']) && isset($_POST['email']) && isset($_POST['lozinka'])) {
 	$email=trim($_POST['email']);
 	$lozinka=trim($_POST['lozinka']);
 	
+	if($ime == '' || $email == '' || $lozinka == '') {
+		$_SESSION['greskaReg'] = "Unesite sve podatke!";
+		header("Location: registracija.php");
+		return;
+	}
 	
 	header("Location: login.php");
 	if($user->registrovanjeKorisnika($ime,$email,$lozinka))
 	{	
+		$_SESSION['infoLogin'] = "Uspesno kreiranje naloga!";
 		header("Location: login.php");
 	}
 	else {

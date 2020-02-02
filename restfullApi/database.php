@@ -38,6 +38,41 @@ class Database {
 		$this->dblink->set_charset("utf8");
 	}
 	
+	function rezervacija($data) {
+		$mysqli = new mysqli($this->hostname, $this->username, $this->password, $this->dbname);
+		$cols = '(ponudaID, korisnikID)';
+		
+		$values = "(".$data[0]['ponuda'].",".$data[0]['korisnik'].")";
+		
+		$query = 'INSERT into rezervacija '.$cols. ' VALUES '.$values;
+		
+		if($mysqli->query($query))
+		{
+			$this ->result = true;
+		}
+		else
+		{
+			$this->result = false;
+		}
+		$mysqli->close();
+	}
+
+	function ponistiRezervaciju($data) {
+		$mysqli = new mysqli($this->hostname, $this->username, $this->password, $this->dbname);
+		
+		$query = 'DELETE from rezervacija WHERE rezervacijaID = '.$data[0]['rezervacija'];
+		
+		if($mysqli->query($query))
+		{
+			$this ->result = true;
+		}
+		else
+		{
+			$this->result = false;
+		}
+		$mysqli->close();
+	}
+
 	function uloguj($podaci) {
 		$mysqli = new mysqli($this->hostname, $this->username, $this->password, $this->dbname);
 		$sql="SELECT * FROM korisnik u WHERE u.email = '" .$podaci[0]['username'] . "' AND u.lozinka = '".$podaci[0]['password']. "'";

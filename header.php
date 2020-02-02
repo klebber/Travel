@@ -17,6 +17,7 @@
                   <nav>
                     <ul class="nav topnav">
                       <li><a href="index.php">Početna</a></li>
+                      <li><a href="promo.php">Promo</a></li>
                       <li><a href="destinacije.php">Destinacije</a></li>
                       <?php if($_SESSION['ulogovan'] == 1 && $_SESSION['rola'] == 'korisnik'){ ?>
 			                  <li><a href="rezervacije.php">Rezervacije</a></li>
@@ -25,8 +26,7 @@
 			                  <li><a href="administracija.php">Administracija</a></li>
                       <?php } ?>
                       <?php if($_SESSION['ulogovan'] == 1){ ?>
-			                  <li><a >Ime: <b><?php echo $_SESSION['ime']; ?></b></a></li>
-			                  <li><a href="logout.php">Logout</a></li>
+			                  <li><a href="logout.php">Logout(<font color="lightgreen"><?= $_SESSION['ime']; ?></font>)</a></li>
 		                  <?php } else { ?>
 			                  <li><a href="login.php">Login</a></li>
 			                  <li><a href="registracija.php">Registracija</a></li>

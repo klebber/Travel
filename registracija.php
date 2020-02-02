@@ -34,12 +34,19 @@ if($_SESSION['ulogovan'] == 1) {
 
     <div class="row">
         <div class="span12">
-            <div class="blank50"></div>
+            <div class="blank20"></div>
         </div>
     </div>
     
 	<section id='maincontent'>
         <div class="container">
+            <?php if (isset($_SESSION['greskaReg'])) { ?>
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <?php echo ($_SESSION['greskaReg']); ?>
+                </div>
+            <?php unset($_SESSION['greskaReg']);
+            } ?>
             <h2><strong>REGISTRACIJA</strong></h2>
             <?php if(isset($_SESSION['greskaReg'])) {?>
                     <div class="alert alert-error">
@@ -72,7 +79,6 @@ if($_SESSION['ulogovan'] == 1) {
 
     <div class="row">
         <div class="span12">
-			<div class="blank100"></div>
 			<div class="blank100"></div>
         </div>
     </div>

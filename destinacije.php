@@ -16,6 +16,7 @@
     <link href="css/font-awesome.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
 
     <link href="css/style.css" rel="stylesheet">
     <link href="color/default.css" rel="stylesheet">
@@ -75,10 +76,17 @@
 
     <section id='maincontent'>
         <div class="container">
+            <?php if (isset($_SESSION['greskaDest'])) { ?>
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <?php echo ($_SESSION['greskaDest']); ?>
+                </div>
+            <?php unset($_SESSION['greskaDest']);
+            } ?>
             <label class="control-label">Pretražite destinacije:</label>
             <form action="" method="post" role="form" class="contactForm" autocomplete="off">
                 <div class="row">
-                    <div class="span4 form-group">
+                    <div class="span8 form-group">
                         <input type="text" id="txt" class="inputfield" placeholder="Destinacija" />
                         <div id="livesearch"></div>
                         <table id="tabela" class="table table-hover">
@@ -89,13 +97,16 @@
                                     <th>Povratak</th>
                                     <th>
                                         Cena
-                                        <a href="#" onclick="loadTable(' ORDER BY cena ASC')">R</a>
-                                        <a href="#" onclick="loadTable(' ORDER BY cena DESC')">O</a>
+                                        <a href="#" onclick="loadTable(' ORDER BY cena ASC')" class="fas fa-angle-up"></a>
+                                        <a href="#" onclick="loadTable(' ORDER BY cena DESC')" class="fas fa-angle-down"></a>
                                     </th>
+                                    <?php if ($_SESSION['ulogovan'] == 1 && $_SESSION['rola'] == 'korisnik') { ?>
+                                        <th>Rezervacija</th>
+                                    <?php } ?>
                                 </tr>
                             </thead>
                             <tbody id="redovi">
-                                
+
                             </tbody>
                         </table>
                     </div>
@@ -110,6 +121,7 @@
 
     <div class="row">
         <div class="span12">
+            <div class="blank100"></div>
             <div class="blank100"></div>
         </div>
     </div>

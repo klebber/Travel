@@ -6,6 +6,7 @@ if(isset($_POST['email']) && isset($_POST['lozinka']))
 {
 	$username = $_POST['email'];
 	$password = $_POST['lozinka'];
+
 	if($user->logovanjeKorisnika($username, $password))
 	{	
 		header("Location: index.php");

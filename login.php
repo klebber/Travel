@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include("init.php"); 
-if($_SESSION['ulogovan'] == 1) {
+<?php include("init.php");
+if ($_SESSION['ulogovan'] == 1) {
     header("Location: index.php");
-}?>
+} ?>
+
 <head>
     <meta charset="utf-8">
     <title>TRAVEL - Turistička agencija</title>
@@ -30,43 +31,50 @@ if($_SESSION['ulogovan'] == 1) {
 </head>
 
 <?php include 'header.php'; ?>
+
 <body>
 
     <div class="row">
         <div class="span12">
-            <div class="blank50"></div>
+            <div class="blank20"></div>
         </div>
     </div>
 
-	<section id='maincontent'>
+    <section id='maincontent'>
         <div class="container">
-			<h2><strong>LOGIN</strong></h2>
-			<?php if(isset($_SESSION['greskaLogin'])) {?>
-				<div class="alert alert-error">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					<?php echo($_SESSION['greskaLogin']); ?>
-				</div>
-				<?php unset($_SESSION['greskaLogin']);
-			}?>
-			<form role="form" id="login_form" name="login_form" method="post" action="obradaLogin.php">
-				<div class="form-group">
-					<label for="email">E-mail adresa:</label>
-					<input type="email" name="email" class="form-control" id="email">
-				</div>
-				<div class="form-group">
-					<label for="pwd">Lozinka:</label>
-					<input type="password" name= "lozinka" class="form-control" id="pwd">
-				</div>
+            <?php if (isset($_SESSION['infoLogin'])) { ?>
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <?php echo ($_SESSION['infoLogin']); ?>
+                </div>
+            <?php unset($_SESSION['infoLogin']);
+            } 
+            if (isset($_SESSION['greskaLogin'])) { ?>
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <?php echo ($_SESSION['greskaLogin']); ?>
+                </div>
+            <?php unset($_SESSION['greskaLogin']);
+            } ?>
+            <h2><strong>LOGIN</strong></h2>
+            <form role="form" id="login_form" name="login_form" method="post" action="obradaLogin.php">
+                <div class="form-group">
+                    <label for="email">E-mail adresa:</label>
+                    <input type="email" name="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Lozinka:</label>
+                    <input type="password" name="lozinka" class="form-control" id="pwd">
+                </div>
 
-				<button type="submit" name="frm_submit" class="btn btn-color">Login</button>
-			</form>
-		</div>
-	</section>
+                <button type="submit" name="frm_submit" class="btn btn-color">Login</button>
+            </form>
+        </div>
+    </section>
 
     <div class="row">
         <div class="span12">
-			<div class="blank100"></div>
-			<div class="blank100"></div>
+            <div class="blank100"></div>
         </div>
     </div>
 
