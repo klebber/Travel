@@ -40,7 +40,7 @@
         <div class="container">
             <div class="row">
                 <div class="span12">
-                    <div class="features_content" align = 'center'>
+                    <div class="embed" align = 'center'>
                         <iframe width="1000" height="562" src="https://www.youtube.com/embed/MPSMDd5wuvA?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>

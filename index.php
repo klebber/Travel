@@ -68,7 +68,7 @@
     <div class="container">
       <div class="row">
         <div class="span8">
-          <div class="features_content">
+          <div class="embed">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2832.4022258262653!2d20.47297951499416!3d44.77260458734403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a70576248bf79%3A0xadaf5cff042d3bd0!2z0KTQsNC60YPQu9GC0LXRgiDQvtGA0LPQsNC90LjQt9Cw0YbQuNC-0L3QuNGFINC90LDRg9C60LA!5e0!3m2!1ssr!2srs!4v1462986871331" width="750" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
           </div>
         </div>
@@ -83,16 +83,6 @@
           </div>
         </div>
       </div>
-
-      <!-- blank divider -->
-      <div class="row">
-        <div class="span12">
-          <div class="blank10"></div>
-        </div>
-      </div>
-
-
-
 
 
     </div>
