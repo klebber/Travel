@@ -14,7 +14,7 @@ if(isset($_POST['ime']) && isset($_POST['email']) && isset($_POST['lozinka'])) {
 		return;
 	}
 	
-	header("Location: login.php");
+	
 	if($user->registrovanjeKorisnika($ime,$email,$lozinka))
 	{	
 		$_SESSION['infoLogin'] = "Uspesno kreiranje naloga!";

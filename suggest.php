@@ -2,7 +2,7 @@
 if (!isset($_GET['unos'])) {
     echo "Parametar unos nije prosleđen!";
 } else {
-    $pomocna = $_GET["unos"];
+    $pomocna = $mysqli->real_escape_string($_GET["unos"]);
     include "konekcija.php";
     
     $upit = "SELECT destinacijaID, grad FROM destinacija WHERE grad LIKE '$pomocna%' ORDER BY grad";

@@ -6,8 +6,6 @@ class Database {
 	private $dbname = "travel";
 	private $dblink;
 	private $result = true;
-	private $records;
-	private $affectedRows;
  
 
 	function __construct($dbname)
@@ -41,8 +39,9 @@ class Database {
 	function rezervacija($data) {
 		$mysqli = new mysqli($this->hostname, $this->username, $this->password, $this->dbname);
 		$cols = '(ponudaID, korisnikID)';
-		
-		$values = "(".$data[0]['ponuda'].",".$data[0]['korisnik'].")";
+		$ponuda = $mysqli->real_escape_string($data[0]['ponuda']);
+		$korisnik = $mysqli->real_escape_string($data[0]['korisnik']);
+		$values = "(".$ponuda.",".$korisnik.")";
 		
 		$query = 'INSERT into rezervacija '.$cols. ' VALUES '.$values;
 		
@@ -60,7 +59,8 @@ class Database {
 	function ponistiRezervaciju($data) {
 		$mysqli = new mysqli($this->hostname, $this->username, $this->password, $this->dbname);
 		
-		$query = 'DELETE from rezervacija WHERE rezervacijaID = '.$data[0]['rezervacija'];
+		$rezervacija = $mysqli->real_escape_string($data[0]['rezervacija']);
+		$query = 'DELETE from rezervacija WHERE rezervacijaID = '.$rezervacija;
 		
 		if($mysqli->query($query))
 		{
@@ -73,9 +73,11 @@ class Database {
 		$mysqli->close();
 	}
 
-	function uloguj($podaci) {
+	function uloguj($data) {
 		$mysqli = new mysqli($this->hostname, $this->username, $this->password, $this->dbname);
-		$sql="SELECT * FROM korisnik u WHERE u.email = '" .$podaci[0]['username'] . "' AND u.lozinka = '".$podaci[0]['password']. "'";
+		$username = $mysqli->real_escape_string($data[0]['username']);
+		$password = $mysqli->real_escape_string($data[0]['password']);
+		$sql="SELECT * FROM korisnik u WHERE u.email = '" .$username . "' AND u.lozinka = '".$password. "'";
 		$this->result = $mysqli->query($sql);
 		$mysqli->close();
 	}
@@ -84,7 +86,11 @@ class Database {
 		$mysqli = new mysqli($this->hostname, $this->username, $this->password, $this->dbname);
 		$cols = '(ime, email, lozinka,rola)';
 		
-		$values = "('".$data[0]['ime']."','".$data[0]['email']."','".$data[0]['lozinka']."','".$data[0]['rola']."')";
+		$ime = $mysqli->real_escape_string($data[0]['ime']);
+		$email = $mysqli->real_escape_string($data[0]['email']);
+		$lozinka = $mysqli->real_escape_string($data[0]['lozinka']);
+		$rola = $mysqli->real_escape_string($data[0]['email']);
+		$values = "('".$ime."','".$email."','".$lozinka."','".$rola."')";
 		
 		$query = 'INSERT into korisnik '.$cols. ' VALUES '.$values;
 		
@@ -99,16 +105,6 @@ class Database {
 		$mysqli->close();
 	}
 	
-	function ExecuteQuery($query)
-	{
-		if($this->result = $this->dblink->query($query)){
-			if (isset($this->result->num_rows)) $this->records = $this->result->num_rows;
-				if (isset($this->dblink->affected_rows)) $this->affected = $this->dblink->affected_rows;
-					return true;
-		}	
-		else{
-			return false;
-		}
-	}
+	
 }
 ?>
